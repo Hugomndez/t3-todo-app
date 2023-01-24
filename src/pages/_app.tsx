@@ -2,6 +2,7 @@ import { Josefin_Sans } from '@next/font/google';
 import { type Session } from 'next-auth';
 import { SessionProvider } from 'next-auth/react';
 import { type AppType } from 'next/app';
+import Head from 'next/head';
 
 import { api } from '../utils/api';
 
@@ -24,6 +25,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
           font-family: ${josefinSans.style.fontFamily};
         }
       `}</style>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <SessionProvider session={session}>
         <Component {...pageProps} />
       </SessionProvider>
