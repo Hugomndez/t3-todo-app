@@ -4,6 +4,14 @@ html {
   scroll-behavior: smooth;
 }
 
+body[data-theme='light'] {
+  --color-bg-primary: #fff;
+}
+
+body[data-theme='dark'] {
+  --color-bg-primary: #15232d;
+}
+
 body {
   font-size: 1.6rem;
   font-style: normal;
@@ -12,6 +20,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  background: var(--color-bg-primary);
 }
 
 *,
