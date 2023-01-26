@@ -1,3 +1,34 @@
+:root {
+  /* THEME */
+  color-scheme: light dark;
+
+  /* Primary */
+  --BrighBlue: hsl(220, 98%, 61%);
+  --CheckBackgroud: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+
+  /* Light */
+  --VeryLightGray: hsl(0, 0%, 98%);
+  --VeryLightGrayishBlue: hsl(236, 33%, 92%);
+  --LightGrayishBlue: hsl(233, 11%, 84%);
+  --DarkGrayishBlue: hsl(236, 9%, 61%);
+  --VeryDarkGrayishBlue: hsl(235, 19%, 35%);
+
+  /* Dark */
+  --VeryDarkBlue: hsl(235, 21%, 11%);
+  --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+  --LightGrayishBlue: hsl(234, 39%, 85%);
+  --LightGrayishBlueHover: hsl(236, 33%, 92%);
+  --DarkGrayishBlue: hsl(234, 11%, 52%);
+  --VeryDarkGrayishBlue: hsl(233, 14%, 35%);
+  --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
+
+  /* TYPOGRAPHY */
+  --FS-BODY: 1.8rem;
+
+  --FW-regular: 400;
+  --FW-Bold: 700;
+}
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -5,15 +36,16 @@ html {
 }
 
 body[data-theme='light'] {
-  --color-bg-primary: #fff;
+  --color-bg-primary: hsl(0, 0%, 98%);
 }
 
 body[data-theme='dark'] {
-  --color-bg-primary: #15232d;
+  --color-bg-primary: hsl(235, 21%, 11%);
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: var(--FS-BODY);
+  font-weight: var(--FW-regular);
   font-style: normal;
   font-synthesis: none;
   text-rendering: optimizeLegibility;

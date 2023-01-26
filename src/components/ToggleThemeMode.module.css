@@ -1,0 +1,100 @@
+@import 'https://unpkg.com/open-props/easings.min.css';
+
+.themeToggle {
+  --size: 2rem;
+  --icon-fill: hsl(210 10% 30%);
+  --icon-fill-hover: hsl(210 10% 15%);
+
+  background: none;
+  border: none;
+  padding: 0;
+
+  inline-size: var(--size);
+  block-size: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+
+  outline-offset: 5px;
+}
+
+.themeToggle > svg {
+  inline-size: 100%;
+  block-size: 100%;
+  stroke-linecap: round;
+}
+
+body[data-theme='dark'] .themeToggle {
+  --icon-fill: hsl(210 10% 70%);
+  --icon-fill-hover: hsl(210 15% 90%);
+}
+
+@media (hover: none) {
+  .themeToggle {
+    --size: 48px;
+  }
+}
+
+.sunAndMoon > :is(.moon, .sun, .sun-beams) {
+  transform-origin: center center;
+}
+
+.sunAndMoon > :is(.moon, .sun) {
+  fill: var(--icon-fill);
+}
+
+.sunAndMoon > .sunBeams {
+  stroke: var(--icon-fill);
+  stroke-width: 2px;
+}
+
+body[data-theme='dark'] .sun {
+  transform: scale(1.75);
+}
+
+body[data-theme='dark'] .sunBeams {
+  opacity: 0;
+}
+
+body[data-theme='dark'] .moon > circle {
+  transform: translateX(-7px);
+}
+
+.sunAndMoon > .sun {
+  transition: transform 0.5s var(--ease-elastic-3);
+}
+
+.sunAndMoon > .sun-beams {
+  transition: transform 0.5s var(--ease-elastic-4), opacity 0.5s var(--ease-3);
+}
+
+.sunAndMoon .moon > circle {
+  transition: transform 0.25s var(--ease-out-5);
+}
+
+body[data-theme='dark'] .sunAndMoon > .sun {
+  transform: scale(1.75);
+  transition-timing-function: var(--ease-3);
+  transition-duration: 0.25s;
+}
+
+body[data-theme='dark'] .sunAndMoon > .sun-beams {
+  transform: rotateZ(-25deg);
+  transition-duration: 0.15s;
+}
+
+body[data-theme='dark'] .sunAndMoon .moon > circle {
+  transition-delay: 0.25s;
+  transition-duration: 0.5s;
+}
+
+.themeToggle:is(:hover, :focus-visible) > .sunAndMoon {
+  fill: var(--icon-fill-hover);
+}
+
+.themeToggle:is(:hover, :focus-visible) .sunAndMoon > .sunBeams {
+  stroke: var(--icon-fill-hover);
+}
