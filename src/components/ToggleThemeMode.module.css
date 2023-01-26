@@ -21,15 +21,23 @@
   outline-offset: 5px;
 }
 
+[data-theme='dark'] .themeToggle {
+  --icon-fill: hsl(210 10% 70%);
+  --icon-fill-hover: hsl(210 15% 90%);
+}
+
 .themeToggle > svg {
   inline-size: 100%;
   block-size: 100%;
   stroke-linecap: round;
 }
 
-body[data-theme='dark'] .themeToggle {
-  --icon-fill: hsl(210 10% 70%);
-  --icon-fill-hover: hsl(210 15% 90%);
+.themeToggle:is(:hover, :focus-visible) > .sunAndMoon > :is(.moon, .sun) {
+  fill: var(--icon-fill-hover);
+}
+
+.themeToggle:is(:hover, :focus-visible) .sunAndMoon > .sunBeams {
+  stroke: var(--icon-fill-hover);
 }
 
 @media (hover: none) {
@@ -38,7 +46,7 @@ body[data-theme='dark'] .themeToggle {
   }
 }
 
-.sunAndMoon > :is(.moon, .sun, .sun-beams) {
+.sunAndMoon > :is(.moon, .sun, .sunBeams) {
   transform-origin: center center;
 }
 
@@ -51,50 +59,44 @@ body[data-theme='dark'] .themeToggle {
   stroke-width: 2px;
 }
 
-body[data-theme='dark'] .sun {
+[data-theme='dark'] .sun {
   transform: scale(1.75);
 }
 
-body[data-theme='dark'] .sunBeams {
+[data-theme='dark'] .sunBeams {
   opacity: 0;
 }
 
-body[data-theme='dark'] .moon > circle {
+[data-theme='dark'] .moon > circle {
   transform: translateX(-7px);
 }
 
-.sunAndMoon > .sun {
-  transition: transform 0.5s var(--ease-elastic-3);
-}
+@media (prefers-reduced-motion: no-preference) {
+  .sunAndMoon > .sun {
+    transition: transform 0.5s var(--ease-elastic-3);
+  }
 
-.sunAndMoon > .sun-beams {
-  transition: transform 0.5s var(--ease-elastic-4), opacity 0.5s var(--ease-3);
-}
+  .sunAndMoon > .sunBeams {
+    transition: transform 0.5s var(--ease-elastic-4), opacity 0.5s var(--ease-3);
+  }
 
-.sunAndMoon .moon > circle {
-  transition: transform 0.25s var(--ease-out-5);
-}
+  .sunAndMoon .moon > circle {
+    transition: transform 0.25s var(--ease-out-5);
+  }
 
-body[data-theme='dark'] .sunAndMoon > .sun {
-  transform: scale(1.75);
-  transition-timing-function: var(--ease-3);
-  transition-duration: 0.25s;
-}
+  [data-theme='dark'] .sunAndMoon > .sun {
+    transition-timing-function: var(--ease-3);
+    transition-duration: 0.25s;
+    transform: scale(1.75);
+  }
 
-body[data-theme='dark'] .sunAndMoon > .sun-beams {
-  transform: rotateZ(-25deg);
-  transition-duration: 0.15s;
-}
+  [data-theme='dark'] .sunAndMoon > .sunBeams {
+    transition-duration: 0.15s;
+    transform: rotateZ(-25deg);
+  }
 
-body[data-theme='dark'] .sunAndMoon .moon > circle {
-  transition-delay: 0.25s;
-  transition-duration: 0.5s;
-}
-
-.themeToggle:is(:hover, :focus-visible) > .sunAndMoon {
-  fill: var(--icon-fill-hover);
-}
-
-.themeToggle:is(:hover, :focus-visible) .sunAndMoon > .sunBeams {
-  stroke: var(--icon-fill-hover);
+  [data-theme='dark'] .sunAndMoon > .moon > circle {
+    transition-duration: 0.5s;
+    transition-delay: 0.25s;
+  }
 }
