@@ -12,6 +12,7 @@ const josefinSans = Josefin_Sans({
   weight: ['400', '700'],
   style: ['normal'],
   subsets: ['latin'],
+  display: 'swap',
 });
 
 const MyApp: AppType<{ session: Session | null }> = ({

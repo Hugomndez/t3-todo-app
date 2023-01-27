@@ -1,15 +1,15 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
 const setInitialTheme = `
-function getUserPreference() {
+(function getUserPreference() {
   if(window.localStorage.getItem('usehooks-ts-dark-mode')) {
-    return window.localStorage.getItem('usehooks-ts-dark-mode') ? 'dark' : 'light'
+    return window.localStorage.getItem('usehooks-ts-dark-mode') ? 'dark' : 'light';
   }
   return window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
-    : 'light'
+    : 'light';
 }
-document.body.dataset.theme = getUserPreference();
+document.body.dataset.theme = getUserPreference())();
 `;
 
 export default function Document() {

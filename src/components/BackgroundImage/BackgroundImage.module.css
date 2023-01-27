@@ -1,0 +1,7 @@
+.bg {
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: auto;
+  object-fit: cover;
+}

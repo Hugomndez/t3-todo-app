@@ -7,6 +7,7 @@
   --CheckBackgroud: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
   /* Light */
+  --White: hsl(0, 0%, 100%, 1);
   --VeryLightGray: hsl(0, 0%, 98%);
   --VeryLightGrayishBlue: hsl(236, 33%, 92%);
   --LightGrayishBlue: hsl(233, 11%, 84%);
@@ -82,6 +83,7 @@ html {
 }
 
 body {
+  position: relative;
   font-size: var(--FS-BODY);
   font-weight: var(--FW-regular);
   font-style: normal;

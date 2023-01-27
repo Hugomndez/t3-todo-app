@@ -1,7 +1,7 @@
 .themeToggle {
-  --size: 2rem;
-  --icon-fill: hsl(210 10% 30%);
-  --icon-fill-hover: hsl(210 10% 15%);
+  --size: 3rem;
+  --icon-fill: var(--White);
+  --icon-fill-hover: hsl(210 10% 70%);
 
   background: none;
   border: none;
@@ -19,10 +19,12 @@
   outline-offset: 5px;
 }
 
-[data-theme='dark'] .themeToggle {
+/* [data-theme='dark'] .themeToggle {
+  --icon-fill: hsl(210 10% 30%);
+  --icon-fill-hover: hsl(210 10% 15%);
   --icon-fill: hsl(210 10% 70%);
   --icon-fill-hover: hsl(210 15% 90%);
-}
+} */
 
 .themeToggle > svg {
   inline-size: 100%;
@@ -38,12 +40,6 @@
   stroke: var(--icon-fill-hover);
 }
 
-@media (hover: none) {
-  .themeToggle {
-    --size: 48px;
-  }
-}
-
 .sunAndMoon > :is(.moon, .sun, .sunBeams) {
   transform-origin: center center;
 }
@@ -57,15 +53,15 @@
   stroke-width: 2px;
 }
 
-[data-theme='dark'] .sun {
+[data-theme='light'] .sun {
   transform: scale(1.75);
 }
 
-[data-theme='dark'] .sunBeams {
+[data-theme='light'] .sunBeams {
   opacity: 0;
 }
 
-[data-theme='dark'] .moon > circle {
+[data-theme='light'] .moon > circle {
   transform: translateX(-7px);
 }
 
@@ -82,18 +78,18 @@
     transition: transform 0.25s var(--ease-out-5);
   }
 
-  [data-theme='dark'] .sunAndMoon > .sun {
+  [data-theme='light'] .sunAndMoon > .sun {
     transition-timing-function: var(--ease-3);
     transition-duration: 0.25s;
     transform: scale(1.75);
   }
 
-  [data-theme='dark'] .sunAndMoon > .sunBeams {
+  [data-theme='light'] .sunAndMoon > .sunBeams {
     transition-duration: 0.15s;
     transform: rotateZ(-25deg);
   }
 
-  [data-theme='dark'] .sunAndMoon > .moon > circle {
+  [data-theme='light'] .sunAndMoon > .moon > circle {
     transition-duration: 0.5s;
     transition-delay: 0.25s;
   }
