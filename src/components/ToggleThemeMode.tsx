@@ -10,11 +10,13 @@ const ToggleThemeMode = () => {
     document.body.dataset.theme = isDarkMode ? 'dark' : 'light';
   }, [isDarkMode]);
 
+  const text = isDarkMode ? 'Use light-mode' : 'Use dark-mode';
+
   return (
     <button
       className={styles.themeToggle}
-      title={isDarkMode ? 'Use light-mode' : 'Use dark-mode'}
-      aria-label={isDarkMode ? 'Use light-mode' : 'Use dark-mode'}
+      title={text}
+      aria-label={text}
       aria-live="polite"
       onClick={toggle}
     >
