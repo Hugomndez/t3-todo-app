@@ -1,15 +1,29 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
-const setInitialTheme = `
-(function getUserPreference() {
-  if(window.localStorage.getItem('usehooks-ts-dark-mode')) {
-    return window.localStorage.getItem('usehooks-ts-dark-mode') ? 'dark' : 'light';
+function getUserPreference() {
+  const preference = window.localStorage.getItem('use-dark-mode');
+  const hasExplicitPreference = typeof preference === 'string';
+
+  if (hasExplicitPreference) {
+    return preference === 'true' ? 'dark' : 'light';
   }
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light';
+
+  const mediaQuery = '(prefers-color-scheme: dark)';
+  const mql = window.matchMedia(mediaQuery);
+  const hasImplicitPreference = typeof mql.matches === 'boolean';
+
+  if (hasImplicitPreference) {
+    return mql.matches ? 'dark' : 'light';
+  }
+
+  return 'light';
 }
-document.body.dataset.theme = getUserPreference())();
+
+const setInitialTheme = `
+(() => {
+  ${getUserPreference.toString()}
+  document.body.dataset.theme = getUserPreference();
+})();
 `;
 
 export default function Document() {
