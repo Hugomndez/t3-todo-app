@@ -2,9 +2,12 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import styles from './Header.module.css';
 
-const ToggleThemeMode = dynamic(() => import('components/ToggleThemeMode'), {
-  ssr: false,
-});
+const ToggleThemeMode = dynamic(
+  () => import('components/ToggleThemeMode/ToggleThemeMode'),
+  {
+    ssr: false,
+  }
+);
 
 const Header = () => {
   return (

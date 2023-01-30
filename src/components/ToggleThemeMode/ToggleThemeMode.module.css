@@ -62,7 +62,7 @@
 }
 
 [data-theme='light'] .moon > circle {
-  transform: translateX(-7px);
+  transform: translateX(-8px);
 }
 
 @media (prefers-reduced-motion: no-preference) {
