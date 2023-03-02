@@ -1,7 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
+import styles from './AddTodo.module.css';
 
 const Schema = z.object({
   newTodo: z.string().min(1, { message: 'Required' }),
@@ -17,16 +19,23 @@ const AddTodo = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitSuccessful },
   } = useForm<ValidationSchema>({
     resolver: zodResolver(Schema),
     defaultValues: initValues,
   });
 
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset({ newTodo: '' });
+    }
+  }, [isSubmitSuccessful, reset]);
+
   const onSubmit: SubmitHandler<ValidationSchema> = (data) => console.log(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <input
         type="text"
         placeholder="Create a new todo..."
