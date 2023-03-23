@@ -1,4 +1,4 @@
-import { AddTodo, BackgroundImage, Header } from 'components';
+import { AddTodo, BackgroundImage, Header, Todos } from 'components';
 import { type NextPage } from 'next';
 import Head from 'next/head';
 
@@ -13,6 +13,7 @@ const index: NextPage = () => {
       <Header />
       <main>
         <AddTodo />
+        <Todos />
       </main>
     </>
   );
