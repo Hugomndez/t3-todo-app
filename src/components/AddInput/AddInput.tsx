@@ -2,20 +2,27 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
+import { api } from 'utils/api';
 import * as z from 'zod';
-import styles from './AddTodo.module.css';
+import styles from './addInput.module.css';
 
 const Schema = z.object({
-  newTodo: z.string().min(1, { message: 'Required' }),
+  text: z.string().min(1, { message: 'Required' }),
 });
 
 type ValidationSchema = z.infer<typeof Schema>;
 
 const initValues: ValidationSchema = {
-  newTodo: '',
+  text: '',
 };
 
-const AddTodo = () => {
+const AddInput = () => {
+  const ctx = api.useContext();
+
+  const { mutate, isLoading } = api.todo.add.useMutation({
+    onSuccess: () => ctx.todo.invalidate(),
+  });
+
   const {
     register,
     handleSubmit,
@@ -28,25 +35,32 @@ const AddTodo = () => {
 
   useEffect(() => {
     if (isSubmitSuccessful) {
-      reset({ newTodo: '' });
+      reset({ text: '' });
     }
   }, [isSubmitSuccessful, reset]);
 
-  const onSubmit: SubmitHandler<ValidationSchema> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<ValidationSchema> = ({ text }) => {
+    mutate({
+      newText: text,
+    });
+  };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <input
         type="text"
         placeholder="Create a new todo..."
-        {...register('newTodo')}
+        {...register('text')}
+        disabled={isLoading}
       />
 
-      {errors.newTodo && <span>This field is required</span>}
+      {errors.text && <span>This field is required</span>}
 
-      <button type="submit">Add</button>
+      <button type="submit" disabled={isLoading}>
+        Add
+      </button>
     </form>
   );
 };
 
-export default AddTodo;
+export default AddInput;

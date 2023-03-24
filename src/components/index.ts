@@ -1,4 +1,4 @@
-export { AddTodo } from './AddTodo';
+export { AddInput } from './AddInput';
 export { BackgroundImage } from './BackgroundImage';
 export { Header } from './Header';
 export { Todos } from './Todos';
