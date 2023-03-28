@@ -76,6 +76,15 @@
   color: #5b5e7e;
 }
 
+.clearItems:hover {
+  color: var(--VeryDarkGrayishBlueItem);
+  cursor: pointer;
+}
+
+[data-theme='dark'] .clearItems:hover {
+  color: var(--LightGrayishBlueHover);
+}
+
 .moreDetails {
   display: flex;
   justify-content: center;
