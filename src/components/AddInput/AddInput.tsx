@@ -7,7 +7,10 @@ import * as z from 'zod';
 import styles from './addInput.module.css';
 
 const Schema = z.object({
-  text: z.string().min(1, { message: 'Required' }),
+  text: z
+    .string()
+    .min(1, { message: 'Required' })
+    .max(50, { message: 'Text to long' }),
 });
 
 type ValidationSchema = z.infer<typeof Schema>;
@@ -54,7 +57,7 @@ const AddInput = () => {
         disabled={isLoading}
       />
 
-      {errors.text && <span>This field is required</span>}
+      {errors.text && <span>{errors.text.message}</span>}
 
       <button type="submit" disabled={isLoading}>
         Add
