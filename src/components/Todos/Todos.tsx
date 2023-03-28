@@ -59,9 +59,24 @@ const Todos = () => {
         </li>
       </ul>
       <div className={styles.moreDetails}>
-        <span onClick={() => setSelect('all')}>All</span>
-        <span onClick={() => setSelect('active')}>Active</span>
-        <span onClick={() => setSelect('completed')}>Completed</span>
+        <span
+          className={select === 'all' ? styles.active : ''}
+          onClick={() => setSelect('all')}
+        >
+          All
+        </span>
+        <span
+          className={select === 'active' ? styles.active : ''}
+          onClick={() => setSelect('active')}
+        >
+          Active
+        </span>
+        <span
+          className={select === 'completed' ? styles.active : ''}
+          onClick={() => setSelect('completed')}
+        >
+          Completed
+        </span>
       </div>
     </>
   );

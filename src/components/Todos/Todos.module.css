@@ -101,6 +101,24 @@
   border-radius: 5px;
 }
 
+.moreDetails span {
+  cursor: pointer;
+}
+
+.active {
+  color: var(--BrighBlue);
+}
+
+@media (hover: hover) {
+  .moreDetails span:hover {
+    color: var(--VeryDarkGrayishBlueItem);
+  }
+
+  [data-theme='dark'] .moreDetails span:hover {
+    color: var(--LightGrayishBlueHover);
+  }
+}
+
 [data-theme='dark'] .moreDetails {
   color: #5b5e7e;
   background-color: var(--VeryDarkDesaturatedBlue);
