@@ -1,8 +1,13 @@
+import { useState } from 'react';
 import { api } from 'utils/api';
 import styles from './Todos.module.css';
 
+type SelectOptions = 'all' | 'active' | 'completed';
+
 const Todos = () => {
   const ctx = api.useContext();
+
+  const [select, setSelect] = useState<SelectOptions>('all');
 
   const { data, isLoading } = api.todo.getAll.useQuery();
 
@@ -17,10 +22,19 @@ const Todos = () => {
 
   if (!data) return <div>Something went Wrong</div>;
 
+  const activeItems = data.filter((i) => i.completed === false);
+
+  const items =
+    {
+      all: data,
+      active: activeItems,
+      completed: data.filter((i) => i.completed === true),
+    }[select] || data;
+
   return (
     <>
       <ul className={styles.wrapper}>
-        {data?.map((item) => (
+        {items.map((item) => (
           <li
             key={item.id}
             className={
@@ -35,19 +49,40 @@ const Todos = () => {
           </li>
         ))}
         <li className={styles.details}>
-          <p>3 Items left</p> <p onClick={() => clear()}>Clear Completed</p>
+          <Count
+            isCompletedCount={select === 'completed' ? true : false}
+            count={select === 'all' ? activeItems.length : items.length}
+          />
+          <span className={styles.clearItems} onClick={() => clear()}>
+            Clear Completed
+          </span>
         </li>
       </ul>
       <div className={styles.moreDetails}>
-        <p>All</p>
-        <p>Active</p>
-        <p>Completed</p>
+        <span onClick={() => setSelect('all')}>All</span>
+        <span onClick={() => setSelect('active')}>Active</span>
+        <span onClick={() => setSelect('completed')}>Completed</span>
       </div>
     </>
   );
 };
 
 export default Todos;
+
+const Count = ({
+  isCompletedCount,
+  count,
+}: {
+  isCompletedCount: boolean;
+  count: number;
+}) => {
+  return (
+    <span>
+      {count} {count === 1 ? ' item' : ' items'}
+      {isCompletedCount ? null : ' left'}
+    </span>
+  );
+};
 
 const Check = ({
   completed,
