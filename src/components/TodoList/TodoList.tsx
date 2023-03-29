@@ -1,11 +1,11 @@
 import { LoadingDots } from 'components';
 import { useState } from 'react';
 import { api } from 'utils/api';
-import styles from './Todos.module.css';
+import styles from './TodoList.module.css';
 
 type Filters = 'all' | 'active' | 'completed';
 
-const Todos = () => {
+const TodoList = () => {
   const ctx = api.useContext();
 
   const [filter, setFilter] = useState<Filters>('all');
@@ -89,7 +89,7 @@ const Todos = () => {
   );
 };
 
-export default Todos;
+export default TodoList;
 
 const Count = ({
   isCompletedCount,
