@@ -3,16 +3,16 @@ import { useState } from 'react';
 import { api } from 'utils/api';
 import styles from './Todos.module.css';
 
-type SelectOptions = 'all' | 'active' | 'completed';
+type Filters = 'all' | 'active' | 'completed';
 
 const Todos = () => {
   const ctx = api.useContext();
 
-  const [select, setSelect] = useState<SelectOptions>('all');
+  const [filter, setFilter] = useState<Filters>('all');
 
   const { data, isLoading } = api.todo.getAll.useQuery();
 
-  const { mutate: clear } = api.todo.clear.useMutation({
+  const { mutate: clearCompletedItems } = api.todo.clear.useMutation({
     onSuccess: () => ctx.todo.invalidate(),
   });
 
@@ -21,57 +21,66 @@ const Todos = () => {
   if (!data) return <div>Something went Wrong</div>;
 
   const activeItems = data.filter((i) => i.completed === false);
+  const completedItems = data.filter((i) => i.completed === true);
 
-  const items =
-    {
-      all: data,
-      active: activeItems,
-      completed: data.filter((i) => i.completed === true),
-    }[select] || data;
+  const items = {
+    all: data,
+    active: activeItems,
+    completed: completedItems,
+  }[filter];
+
+  const itemsCount = {
+    all: activeItems.length,
+    active: activeItems.length,
+    completed: completedItems.length,
+  };
 
   return (
     <>
       <ul className={styles.wrapper}>
-        {items.map((item) => (
+        {items.map(({ id, text, completed }) => (
           <li
-            key={item.id}
+            key={id}
             className={
-              item.completed
+              completed
                 ? [styles.item, styles.completed].join(' ')
                 : styles.item
             }
           >
-            <Check completed={item.completed} itemID={item.id} />
-            {item.text}
-            <Cross itemID={item.id} />
+            <Check completed={completed} itemID={id} />
+            {text}
+            <Cross itemID={id} />
           </li>
         ))}
         <li className={styles.details}>
           <Count
-            isCompletedCount={select === 'completed' ? true : false}
-            count={select === 'all' ? activeItems.length : items.length}
+            isCompletedCount={filter === 'completed'}
+            count={itemsCount[filter]}
           />
-          <span className={styles.clearItems} onClick={() => clear()}>
+          <span
+            className={styles.clearItems}
+            onClick={() => itemsCount.completed && clearCompletedItems()}
+          >
             Clear Completed
           </span>
         </li>
       </ul>
-      <div className={styles.moreDetails}>
+      <div className={styles.filters}>
         <span
-          className={select === 'all' ? styles.active : ''}
-          onClick={() => setSelect('all')}
+          className={filter === 'all' ? styles.active : ''}
+          onClick={() => setFilter('all')}
         >
           All
         </span>
         <span
-          className={select === 'active' ? styles.active : ''}
-          onClick={() => setSelect('active')}
+          className={filter === 'active' ? styles.active : ''}
+          onClick={() => setFilter('active')}
         >
           Active
         </span>
         <span
-          className={select === 'completed' ? styles.active : ''}
-          onClick={() => setSelect('completed')}
+          className={filter === 'completed' ? styles.active : ''}
+          onClick={() => setFilter('completed')}
         >
           Completed
         </span>
@@ -92,7 +101,7 @@ const Count = ({
   return (
     <span>
       {count} {count === 1 ? ' item' : ' items'}
-      {isCompletedCount ? null : ' left'}
+      {!isCompletedCount && ' left'}
     </span>
   );
 };

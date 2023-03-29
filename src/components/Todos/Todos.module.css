@@ -85,7 +85,7 @@
   color: var(--LightGrayishBlueHover);
 }
 
-.moreDetails {
+.filters {
   display: flex;
   justify-content: center;
   gap: 19px;
@@ -101,7 +101,7 @@
   border-radius: 5px;
 }
 
-.moreDetails span {
+.filters span {
   cursor: pointer;
 }
 
@@ -110,16 +110,16 @@
 }
 
 @media (hover: hover) {
-  .moreDetails span:hover {
+  .filters span:hover {
     color: var(--VeryDarkGrayishBlueItem);
   }
 
-  [data-theme='dark'] .moreDetails span:hover {
+  [data-theme='dark'] .filters span:hover {
     color: var(--LightGrayishBlueHover);
   }
 }
 
-[data-theme='dark'] .moreDetails {
+[data-theme='dark'] .filters {
   color: #5b5e7e;
   background-color: var(--VeryDarkDesaturatedBlue);
   box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
@@ -156,7 +156,7 @@
     letter-spacing: -0.194444px;
   }
 
-  /* .moreDetails {
+  /* .filters {
     display: none;
   } */
 }
