@@ -1,3 +1,4 @@
+import { LoadingDots } from 'components';
 import { useState } from 'react';
 import { api } from 'utils/api';
 import styles from './Todos.module.css';
@@ -15,10 +16,7 @@ const Todos = () => {
     onSuccess: () => ctx.todo.invalidate(),
   });
 
-  if (isLoading)
-    return (
-      <div style={{ display: 'grid', placeItems: 'center' }}>Is Loading...</div>
-    );
+  if (isLoading) return <LoadingDots />;
 
   if (!data) return <div>Something went Wrong</div>;
 

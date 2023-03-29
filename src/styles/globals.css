@@ -35,10 +35,14 @@
 
 [data-theme='light'] {
   --color-bg-primary: var(--VeryLightGray);
+  --main-color: var(--VeryLightGray);
+  --point-color: var(--BrighBlue);
 }
 
 [data-theme='dark'] {
   --color-bg-primary: var(--VeryDarkBlue);
+  --main-color: var(--VeryDarkBlue);
+  --point-color: var(--BrighBlue);
 }
 
 :where(html) {
