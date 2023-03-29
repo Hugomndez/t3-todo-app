@@ -3,6 +3,9 @@ import { type Session } from 'next-auth';
 import { SessionProvider } from 'next-auth/react';
 import { type AppType } from 'next/app';
 import Head from 'next/head';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+import { useDarkMode } from 'usehooks-ts';
 
 import { api } from '../utils/api';
 
@@ -19,6 +22,8 @@ const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
+  const { isDarkMode } = useDarkMode();
+
   return (
     <>
       <style jsx global>{`
@@ -33,6 +38,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
       </Head>
       <SessionProvider session={session}>
         <Component {...pageProps} />
+        <ToastContainer
+          theme={isDarkMode ? 'dark' : 'light'}
+          position="top-right"
+        />
       </SessionProvider>
     </>
   );

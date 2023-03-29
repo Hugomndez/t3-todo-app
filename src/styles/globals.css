@@ -2,6 +2,9 @@
   /* THEME */
   color-scheme: light dark;
 
+  /*Overide default toastify dark color*/
+  --toastify-color-dark: var(--VeryDarkDesaturatedBlue);
+
   /* Primary */
   --BrighBlue: hsl(220, 98%, 61%);
   --CheckBackgroud: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);

@@ -1,7 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import type { Id } from 'react-toastify/dist/types';
 import { api } from 'utils/api';
 import * as z from 'zod';
 import styles from './addInput.module.css';
@@ -9,7 +11,7 @@ import styles from './addInput.module.css';
 const Schema = z.object({
   text: z
     .string()
-    .min(1, { message: 'Required' })
+    .min(1, { message: 'Ups!, add your todo!' })
     .max(50, { message: 'Text to long' }),
 });
 
@@ -22,6 +24,8 @@ const initValues: ValidationSchema = {
 const AddInput = () => {
   const ctx = api.useContext();
 
+  const toastId = useRef<Id>();
+
   const { mutate, isLoading } = api.todo.add.useMutation({
     onSuccess: () => ctx.todo.invalidate(),
   });
@@ -30,6 +34,7 @@ const AddInput = () => {
     register,
     handleSubmit,
     reset,
+    resetField,
     formState: { errors, isSubmitSuccessful },
   } = useForm<ValidationSchema>({
     resolver: zodResolver(Schema),
@@ -48,6 +53,23 @@ const AddInput = () => {
     });
   };
 
+  useEffect(() => {
+    const notify = () =>
+      (toastId.current = toast.error(errors?.text?.message, {
+        delay: 800,
+      }));
+
+    const dismiss = () => toast.dismiss(toastId.current);
+
+    if (errors.text) {
+      notify(), resetField('text');
+    }
+
+    return () => {
+      dismiss();
+    };
+  }, [errors.text, resetField]);
+
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <input
@@ -56,9 +78,6 @@ const AddInput = () => {
         {...register('text')}
         disabled={isLoading}
       />
-
-      {errors.text && <span>{errors.text.message}</span>}
-
       <button type="submit" disabled={isLoading}>
         Add
       </button>
