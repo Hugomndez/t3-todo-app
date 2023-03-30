@@ -20,8 +20,8 @@ const TodoList = () => {
 
   if (!data) return <div>Something went Wrong</div>;
 
-  const activeItems = data.filter((i) => i.completed === false);
-  const completedItems = data.filter((i) => i.completed === true);
+  const activeItems = data.filter((i) => i.isCompleted === false);
+  const completedItems = data.filter((i) => i.isCompleted === true);
 
   const items = {
     all: data,
@@ -38,16 +38,16 @@ const TodoList = () => {
   return (
     <>
       <ul className={styles.wrapper}>
-        {items.map(({ id, text, completed }) => (
+        {items.map(({ id, text, isCompleted }) => (
           <li
             key={id}
             className={
-              completed
+              isCompleted
                 ? [styles.item, styles.completed].join(' ')
                 : styles.item
             }
           >
-            <Check completed={completed} itemID={id} />
+            <Check isCompleted={isCompleted} itemID={id} />
             {text}
             <Cross itemID={id} />
           </li>
@@ -107,10 +107,10 @@ const Count = ({
 };
 
 const Check = ({
-  completed,
+  isCompleted,
   itemID,
 }: {
-  completed: boolean;
+  isCompleted: boolean;
   itemID: string;
 }) => {
   const ctx = api.useContext();
@@ -122,11 +122,11 @@ const Check = ({
   return (
     <div
       className={
-        completed ? [styles.check, styles.completed].join(' ') : styles.check
+        isCompleted ? [styles.check, styles.completed].join(' ') : styles.check
       }
-      onClick={() => toggleTodo({ id: itemID, completed: !completed })}
+      onClick={() => toggleTodo({ id: itemID, isCompleted: !isCompleted })}
     >
-      {completed ? (
+      {isCompleted ? (
         <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9">
           <path
             fill="none"

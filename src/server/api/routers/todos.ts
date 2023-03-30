@@ -15,14 +15,14 @@ export const todoRouter = createTRPCRouter({
       });
     }),
   toggle: publicProcedure
-    .input(z.object({ id: z.string(), completed: z.boolean() }))
+    .input(z.object({ id: z.string(), isCompleted: z.boolean() }))
     .mutation(async ({ ctx, input }) => {
       return await ctx.prisma.todo.update({
         where: {
           id: input.id,
         },
         data: {
-          completed: input.completed,
+          isCompleted: input.isCompleted,
         },
       });
     }),
@@ -38,7 +38,7 @@ export const todoRouter = createTRPCRouter({
   clear: publicProcedure.mutation(async ({ ctx }) => {
     return await ctx.prisma.todo.deleteMany({
       where: {
-        completed: true,
+        isCompleted: true,
       },
     });
   }),

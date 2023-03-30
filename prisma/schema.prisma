@@ -66,9 +66,8 @@ model VerificationToken {
 }
 
 model Todo {
-    id        String   @id @default(cuid())
-    text      String
-    completed Boolean  @default(value: false)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    id          String   @id @default(cuid())
+    text        String
+    isCompleted Boolean  @default(value: false)
+    createdAt   DateTime @default(now())
 }
