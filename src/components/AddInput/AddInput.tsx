@@ -1,9 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useRef } from 'react';
-import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import type { Id } from 'react-toastify/dist/types';
+import { type Id } from 'react-toastify/dist/types';
 import { api } from 'utils/api';
 import * as z from 'zod';
 import styles from './addInput.module.css';

@@ -110,6 +110,18 @@
 }
 
 @media (hover: hover) {
+  .cross {
+    visibility: hidden;
+  }
+
+  .item:hover .cross {
+    visibility: visible;
+  }
+
+  .check:hover {
+    border: 1px solid var(--VeryDarkGrayishBlueItem);
+  }
+
   .filters span:hover {
     color: var(--VeryDarkGrayishBlueItem);
   }
@@ -136,18 +148,6 @@
   .check {
     width: 24px;
     height: 24px;
-  }
-
-  .check:hover {
-    border: 1px solid var(--VeryDarkGrayishBlueItem);
-  }
-
-  .cross {
-    visibility: hidden;
-  }
-
-  .item:hover .cross {
-    visibility: visible;
   }
 
   .details {

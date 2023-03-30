@@ -6,10 +6,8 @@ import Head from 'next/head';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { useDarkMode } from 'usehooks-ts';
-
-import { api } from '../utils/api';
-
 import '../styles/globals.css';
+import { api } from '../utils/api';
 
 const josefinSans = Josefin_Sans({
   weight: ['400', '700'],
