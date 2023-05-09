@@ -11,6 +11,7 @@
   color: var(--VeryDarkGrayishBlue);
   border: none;
   border-radius: 5px;
+  background-color: var(--White);
   box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
 }
 
