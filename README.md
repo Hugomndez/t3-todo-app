@@ -31,6 +31,11 @@ Users should be able to:
 - **Bonus**: Drag and drop to reorder items on the list
 
 ### Screenshot
+![t3-todo-app-iPhone-SE-light](https://user-images.githubusercontent.com/81496381/236992219-75b4d8c6-f14f-41ee-99e8-c491e198d575.png)
+
+![t3-todo-app-iPhone-SE-dark](https://user-images.githubusercontent.com/81496381/236992223-ce0061b7-de1e-4c37-9743-b20ca05688a2.png)
+
+
 
 ### Links
 
