@@ -1,28 +1,64 @@
-# Create T3 App
+# Frontend Mentor - Todo app solution
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## What's next? How do I make an app with this?
+## Table of contents
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Overview
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### The challenge
 
-## Learn More
+Users should be able to:
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Add new todos to the list
+- Mark todos as complete
+- Delete todos from the list
+- Filter by all/active/complete todos
+- Clear all completed todos
+- Toggle light and dark mode
+- **Bonus**: Drag and drop to reorder items on the list
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+### Screenshot
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### Links
 
-## How do I deploy this?
+- Solution URL: [https://github.com/Hugomndez/t3-todo-app](https://github.com/Hugomndez/t3-todo-app)
+- Live Site URL: [https://t3-todo-app-black.vercel.app](https://t3-todo-app-black.vercel.app)
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+## My process
+
+### Built with
+
+- [CSS Modules](https://nextjs.org/docs/app/building-your-application/styling/css-modules) - For styles
+- [React](https://reactjs.org/) - JS library
+- [Next.js](https://nextjs.org/) - React framework
+- [tRPC](https://trpc.io) - End-to-end typesafe APIs made easy.
+- [Prisma](https://prisma.io) - Next-generation Node.js and TypeScript ORM.
+- [PlanetScale](https://planetscale.com) - PlanetScale is the world’s most advanced serverless MySQL platform.
+
+### What I learned
+
+I use this project to learn how to implement light/dark mode, End to End type-safe App.
+
+### Useful resources
+
+- [T3 Stack](https://create.t3.gg) - The best way to start a full-stack, typesafe Next.js app
+- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) - Tutorials
+
+## Author
+
+- Website - [Hugo Méndez](https://hugomendez.dev)
+- Frontend Mentor - [@Hugomndez](https://www.frontendmentor.io/profile/Hugomndez)
+- Twitter - [@hugomndez_dev](https://twitter.com/hugomendez_dev)
